@@ -1,0 +1,16 @@
+body {
+    background-image: url("images/wood.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+}
+
+.diceImages {
+    display: flex;
+    gap: 50px;
+}
+
+.diceImages img {
+    height: 275px;
+    width: 275px;
+}
