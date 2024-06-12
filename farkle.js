@@ -1,6 +1,5 @@
 function rollDice() {
     const diceImages = document.getElementById("diceImages");
-    
     diceImages.innerHTML = '';
 
     for (var i = 0; i < 6; i++) {
@@ -11,7 +10,17 @@ function rollDice() {
         const image = document.createElement("img");
         image.src = src;
         image.alt = "Dice " + diceRoll;
+        
+        image.setAttribute("diceIndex", i);
+        image.setAttribute("diceNumber", diceRoll);
+
+        image.addEventListener("click", handleClick);
 
         diceImages.appendChild(image);
     }
+}
+
+function handleClick(event) {
+    const index = event.target.getAttribute("diceIndex");
+    const number = event.target.getAttribute("diceNumber");
 }
