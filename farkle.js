@@ -1,17 +1,18 @@
+let selected = [];
+
 function rollDice() {
     const diceImages = document.getElementById("diceImages");
     diceImages.innerHTML = '';
 
     for (var i = 0; i < 6; i++) {
-        var diceRoll = Math.floor(Math.random() * 6 + 1);
+        let diceRoll = Math.floor(Math.random() * 6 + 1);
 
-        const src = "images/" + diceRoll + ".png";
+        let src = "images/" + diceRoll + ".png";
 
-        const image = document.createElement("img");
+        let image = document.createElement("img");
         image.src = src;
         image.alt = "Dice " + diceRoll;
         
-        image.setAttribute("diceIndex", i);
         image.setAttribute("diceNumber", diceRoll);
 
         image.addEventListener("click", handleClick);
@@ -21,6 +22,23 @@ function rollDice() {
 }
 
 function handleClick(event) {
-    const index = event.target.getAttribute("diceIndex");
-    const number = event.target.getAttribute("diceNumber");
+    let number = event.target.getAttribute("diceNumber");
+
+    event.target.classList.toggle("selected");
+    
+    if (event.target.classList.contains("selected")) {
+        selected.push(number);
+    }
+    else {
+        let index = selected.indexOf(number);
+        if (index > -1) {
+            selected.splice(index, 1);
+        }
+    }
+
+    //console.log(selected);
+}
+
+function getScore() {
+    
 }

@@ -14,3 +14,7 @@ body {
     height: 275px;
     width: 275px;
 }
+
+.selected {
+    background-color: blue;
+}
