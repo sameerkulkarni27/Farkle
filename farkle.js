@@ -40,5 +40,32 @@ function handleClick(event) {
 }
 
 function getScore() {
-    
+    let score = 0;
+    let occurencesEachNum = [0, 0, 0, 0, 0, 0];
+
+    selected.forEach(num => {
+        if (selected[num]) {
+            occurencesEachNum[num - 1] += 1;
+        }
+    });
+
+    //console.log(occurences);
+
+    for (var i = 0; i < occurencesEachNum.length; i++) {
+        // Account for three of a kind
+        if (occurencesEachNum[i] >= 3) {
+            if (i == 0) {
+                //Three or more 1's, which is differently scored than 100 * number
+            }
+            else {
+                //Three or more of 2-6, which is just 100 * number
+            }
+        }
+    }
+
+    // Total up all of the ones if there are less than 3 of them.
+    score += occurencesEachNum[0] * 100;
+
+    // Total up all of the fives if there are less than 3 of them.
+    score += occurencesEachNum[4] * 50;
 }
