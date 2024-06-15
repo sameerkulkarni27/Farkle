@@ -44,21 +44,26 @@ function getScore() {
     let occurencesEachNum = [0, 0, 0, 0, 0, 0];
 
     selected.forEach(num => {
-        if (selected[num]) {
-            occurencesEachNum[num - 1] += 1;
-        }
+        occurencesEachNum[num - 1] += 1;
     });
 
     //console.log(occurences);
 
+    console.log("Occurences: " + occurencesEachNum);
     for (var i = 0; i < occurencesEachNum.length; i++) {
         // Account for three of a kind
         if (occurencesEachNum[i] >= 3) {
             if (i == 0) {
                 //Three or more 1's, which is differently scored than 100 * number
+                // three 1s: 1000 points
+                // four 1s: 2000 points
+                // five 1s: 3000 points
+                // six 1s: 4000 points
+                score += (1000 * (occurencesEachNum[i] - 2));             
             }
             else {
                 //Three or more of 2-6, which is just 100 * number
+                score += 100 * (i + 1);
             }
         }
     }
@@ -68,4 +73,6 @@ function getScore() {
 
     // Total up all of the fives if there are less than 3 of them.
     score += occurencesEachNum[4] * 50;
+
+    document.getElementById("score").innerText = "Score: " + score;
 }
