@@ -1,6 +1,8 @@
 let selected = [];
 
 function rollDice() {
+    selected = [];
+    
     const diceImages = document.getElementById("diceImages");
     diceImages.innerHTML = '';
 
@@ -35,6 +37,19 @@ function handleClick(event) {
             selected.splice(index, 1);
         }
     }
+
+    const selectedImages = document.getElementById("selectedDice");
+    selected.forEach(num => {
+        let src = "images/" + diceRoll + ".png";
+
+        let image = document.createElement("img");
+        image.src = src;
+        image.alt = "Dice " + diceRoll;
+        
+        image.setAttribute("diceNumber", diceRoll);
+
+        selectedImages.appendChild(image);
+    });
 
     //console.log(selected);
 }
